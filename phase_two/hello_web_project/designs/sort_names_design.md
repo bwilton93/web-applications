@@ -20,10 +20,8 @@ Your response might return plain text, JSON, or HTML code.
 
 _Replace the below with your own design. Think of all the different possible responses your route will return._
 
-```html
-<!-- EXAMPLE -->
-<!-- Response when the post is found: 200 OK -->
-
+```
+Alice,Joe,Julia,Kieran,Zoe
 
 ```
 
@@ -33,6 +31,10 @@ _Replace these with your own design._
 
 ```
 # Request:
+POST /sort-names?names=Joe,Alice,Zoe,Julia,Kieran
+
+# Expected response (sorted list of names):
+Alice,Joe,Julia,Kieran,Zoe
 
 ```
 
@@ -50,6 +52,14 @@ describe Application do
 
   let(:app) { Application.new }
 
+  context 'POST /sort-names' do
+    it 'returns 200 ok' do
+      response = post('/sort-names?names=Joe,Alice,Zoe,Julia,Kieran')
+
+      expect(response.status).to eq 200
+      expect(response.body).to eq 'Alice,Joe,Julia,Kieran,Zoe'
+    end
+  end
 end
 ```
 
