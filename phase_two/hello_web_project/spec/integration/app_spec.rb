@@ -15,4 +15,13 @@ describe Application do
       expect(response.body).to eq 'Alice,Joe,Julia,Kieran,Zoe'
     end
   end
+
+  context 'GET to /hello' do
+    it 'returns 200 OK' do
+      response = get('/hello')
+
+      expect(response.status).to eq 200
+      expect(response.body).to include('<h1>Hello!</h1>')
+    end
+  end
 end

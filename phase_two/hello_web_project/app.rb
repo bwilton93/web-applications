@@ -9,11 +9,7 @@ class Application < Sinatra::Base
   end
 
   get '/hello' do
-    name = params[:name] # The value is 'David'
-  
-    # Do something with `name`...
-  
-    return "Hello #{name}."
+    return erb(:hello)
   end
 
   post '/submit' do
