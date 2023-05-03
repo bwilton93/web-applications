@@ -29,15 +29,17 @@ class Application < Sinatra::Base
   get '/albums' do
     repo = AlbumRepository.new
     
-    albums = []
-    results = repo.all
+    @albums = repo.all
 
-    results.each do |result|
-      album_title = result.title
-      albums << album_title
-    end
+    return erb(:albums)
+    # results = repo.all
+
+    # results.each do |result|
+    #   album_title = result.title
+    #   albums << album_title
+    # end
     
-    return albums.join(", ")
+    # return albums.join(", ")
   end
 
   get '/artists' do

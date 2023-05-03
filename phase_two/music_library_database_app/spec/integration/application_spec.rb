@@ -28,6 +28,22 @@ describe Application do
     end
   end
 
+  context "GET /albums" do
+    it "outputs a list of all albums HTML formatted" do
+      response = get('/albums')
+
+      expect(response.status).to eq 200
+      expect(response.body).to include('<h1>Albums</h1>')
+      expect(response.body).to include('<div>')
+      expect(response.body).to include('Title: Doolittle')
+      expect(response.body).to include('Released: 1989')
+      expect(response.body).to include('Title: Folklore')
+      expect(response.body).to include('Released: 2020')
+      expect(response.body).to include('Title: Ring Ring')
+      expect(response.body).to include('Released: 1973')
+    end
+  end
+
   context "GET /artists" do
     it "returns 200 OK" do
       response = get('/artists')
