@@ -14,4 +14,3 @@ INSERT INTO artists ("name", "genre") VALUES
 ('ABBA', 'Pop'),
 ('Taylor Swift', 'Pop'),
 ('Nina Simone', 'Pop');
-
