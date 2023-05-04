@@ -114,14 +114,25 @@ describe Application do
   end
 
   context "POST /artists" do
-    it "returns 200 OK" do
-      response = post('/artists',name:'Wild Nothing',genre:'Indie')
-      expect(response.status).to eq 200
-      expect(response.body).to eq ""
+    it "returns a success page" do
+      response = post(
+        '/artists',
+        name:'Wild Nothing',
+        genre:'Indie'
+        )
 
-      response = get('/artists')
       expect(response.status).to eq 200
-      expect(response.body).to include('Wild Nothing')
+      expect(response.body).to include("<p>Artist successfully added</p>")
+    end
+    
+    it "returns 400" do
+      response = post(
+        '/artists',
+        title: '',
+        release_year: ''
+      )
+      
+      expect(response.status).to eq 400
     end
   end
 end
