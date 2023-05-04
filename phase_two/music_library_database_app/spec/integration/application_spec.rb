@@ -54,30 +54,30 @@ describe Application do
     end
   end
   
-  # context "GET /artists" do
-  #   it "returns 200 OK" do
-  #     response = get('/artists')
+  context "GET /artists" do
+    it "returns 200 OK" do
+      response = get('/artists')
       
-  #     expect(response.status).to eq(200)
-  #     expect(response.body).to include('<h1>Artists</h1>')
-  #     expect(response.body).to include('<div>')
-  #     expect(response.body).to include('Title: <a href="/artists/1">Pixies</a>')
-  #     expect(response.body).to include('Genre: Rock')
-  #     expect(response.body).to include('Title: <a href="/albums/4">Nina Simone</a>')
-  #     expect(response.body).to include('Genre: Pop')
-  #   end
-  # end
+      expect(response.status).to eq(200)
+      expect(response.body).to include('<h1>Artists</h1>')
+      expect(response.body).to include('<div>')
+      expect(response.body).to include('Name: <a href="/artists/1">Pixies</a>')
+      expect(response.body).to include('Genre: Rock')
+      expect(response.body).to include('Name: <a href="/artists/4">Nina Simone</a>')
+      expect(response.body).to include('Genre: Pop')
+    end
+  end
 
-  # context "GET /artists/:id" do
-  #   it "returns 200 OK" do
-  #     response = get('/artists/1')
+  context "GET /artists/:id" do
+    it "returns 200 OK" do
+      response = get('/artists/1')
 
-  #     expect(response.status).to eq(200)
-  #     expect(response.body).to include ('<h1>Pixies</h1>')
-  #     expect(response.body).to include ('Genre: Rock')  
-  #     expect(response.body).to include ('<a href="/artists">Back</a>')  
-  #   end
-  # end
+      expect(response.status).to eq(200)
+      expect(response.body).to include ('<h1>Pixies</h1>')
+      expect(response.body).to include ('Genre: Rock')  
+      expect(response.body).to include ('<a href="/artists">Back</a>')  
+    end
+  end
 
   context "POST /artists with parameters" do
     it "returns 200 OK" do
