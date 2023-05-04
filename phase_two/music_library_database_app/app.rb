@@ -32,14 +32,6 @@ class Application < Sinatra::Base
     @albums = repo.all
 
     return erb(:albums)
-    # results = repo.all
-
-    # results.each do |result|
-    #   album_title = result.title
-    #   albums << album_title
-    # end
-    
-    # return albums.join(", ")
   end
 
   get '/artists' do
