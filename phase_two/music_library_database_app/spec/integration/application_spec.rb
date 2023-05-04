@@ -129,7 +129,7 @@ describe Application do
       response = post(
         '/artists',
         title: '',
-        release_year: ''
+        genre: ''
       )
       
       expect(response.status).to eq 400
