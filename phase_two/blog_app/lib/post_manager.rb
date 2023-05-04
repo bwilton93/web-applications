@@ -8,7 +8,6 @@ class PostManager
   end
 
   def add_post(post)
-    p post
     @posts << post
   end
 

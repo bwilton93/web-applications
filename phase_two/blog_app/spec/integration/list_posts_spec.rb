@@ -27,7 +27,7 @@ describe Application do
   end
 
   context 'GET /tag/:tag' do
-    xit 'displays the posts tagged with cooking' do
+    it 'displays the posts tagged with cooking' do
       response = get('/tag/cooking')
 
       expect(response.body).to include('Test cooking post')

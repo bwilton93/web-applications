@@ -12,7 +12,7 @@ describe Application do
 
   describe 'Creating a new post' do
     context 'GET /' do
-      xit 'should get the form to add a new post' do
+      it 'should get the form to add a new post' do
         response = get('/')
 
         expect(response.status).to eq(200)
@@ -24,7 +24,7 @@ describe Application do
     end
 
     context 'POST /' do
-      xit 'should add the new post' do
+      it 'should add the new post' do
         _response = post(
           '/posts',
           title: 'A new post',
