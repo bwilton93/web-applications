@@ -53,6 +53,24 @@ describe Application do
       expect(response.body).to include ('Artist: Pixies')      
     end
   end
+
+  context "GET /albums/new" do
+    it "returns the form page to add a new album" do
+      response = get('/albums/new')
+
+      expect(response.status).to eq 200
+      expect(response.body).to include('<form action="/posts" method="POST">')
+      expect(response.body).to include("<h1>Add an album</h1>")
+      expect(response.body).to include('<input type="text" name="title">')
+      expect(response.body).to include('<input type="number" name="release year">')
+    end
+  end
+
+  context "POST /albums" do
+    it "returns a success page" do
+      
+    end
+  end
   
   context "GET /artists" do
     it "returns 200 OK" do
