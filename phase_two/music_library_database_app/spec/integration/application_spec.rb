@@ -64,6 +64,16 @@ describe Application do
       expect(response.status).to eq 200
       expect(response.body).to include("<p>Album successfully created</p>")
     end
+
+    it "returns 400" do
+      response = post(
+        '/albums',
+        title: '',
+        release_year: ''
+      )
+
+      expect(response.status).to eq 400
+    end
   end
   
   context "GET /artists" do
