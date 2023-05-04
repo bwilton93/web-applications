@@ -6,9 +6,16 @@
     <h1>Albums</h1>
     <% @albums.each do |album| %>
       <div>
-        Title: <%= album.title %>
+        Title: <a href="/albums/<%= album.id %>" ><%= album.title %></a><br>
         Released: <%= album.release_year %>
       </div>
     <% end %>
   </body>
 </html>
+
+
+# Test-drive and implement the following change to the music_library_database_app project:
+
+# The page returned by GET /albums should contain a link for each album listed. It should link to /albums/:id, where :id is the corresponding album's id.
+
+# Run the server and make sure you can navigate, using your browser, from the albums list page to the single album page.
