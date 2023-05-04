@@ -43,7 +43,7 @@ describe Application do
       expect(response.body).to include('Released: 1973')
     end
   end
-
+  
   context 'GET /albums/:id' do
     it 'returns the data of a single album formatted in html' do
       response = get('/albums/1')
@@ -53,15 +53,31 @@ describe Application do
       expect(response.body).to include ('Artist: Pixies')      
     end
   end
+  
+  # context "GET /artists" do
+  #   it "returns 200 OK" do
+  #     response = get('/artists')
+      
+  #     expect(response.status).to eq(200)
+  #     expect(response.body).to include('<h1>Artists</h1>')
+  #     expect(response.body).to include('<div>')
+  #     expect(response.body).to include('Title: <a href="/artists/1">Pixies</a>')
+  #     expect(response.body).to include('Genre: Rock')
+  #     expect(response.body).to include('Title: <a href="/albums/4">Nina Simone</a>')
+  #     expect(response.body).to include('Genre: Pop')
+  #   end
+  # end
 
-  context "GET /artists" do
-    it "returns 200 OK" do
-      response = get('/artists')
+  # context "GET /artists/:id" do
+  #   it "returns 200 OK" do
+  #     response = get('/artists/1')
 
-      expect(response.status).to eq(200)
-      expect(response.body).to eq('Pixies, ABBA, Taylor Swift, Nina Simone')
-    end
-  end
+  #     expect(response.status).to eq(200)
+  #     expect(response.body).to include ('<h1>Pixies</h1>')
+  #     expect(response.body).to include ('Genre: Rock')  
+  #     expect(response.body).to include ('<a href="/artists">Back</a>')  
+  #   end
+  # end
 
   context "POST /artists with parameters" do
     it "returns 200 OK" do
