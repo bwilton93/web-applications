@@ -15,19 +15,6 @@ describe Application do
   # class so our tests work.
   let(:app) { Application.new }
 
-  context "POST /albums with parameters" do
-    it 'returns 200 OK' do
-      response = post('/albums',title:'Voyage',release_year:2022,artist_id:2)
-
-      expect(response.status).to eq(200)
-      expect(response.body).to eq ""
-
-      response = get('/albums')
-      expect(response.status).to eq(200)
-      expect(response.body).to include('Voyage')
-    end
-  end
-
   context "GET /albums" do
     it "outputs a list of all albums HTML formatted" do
       response = get('/albums')
@@ -59,16 +46,23 @@ describe Application do
       response = get('/albums/new')
 
       expect(response.status).to eq 200
-      expect(response.body).to include('<form action="/posts" method="POST">')
+      expect(response.body).to include('<form action="/albums" method="POST">')
       expect(response.body).to include("<h1>Add an album</h1>")
-      expect(response.body).to include('<input type="text" name="title">')
-      expect(response.body).to include('<input type="number" name="release year">')
+      expect(response.body).to include('<input type="text" id="album_title" name="title">')
+      expect(response.body).to include('<input type="number" id="release year" name="release_year">')
     end
   end
 
   context "POST /albums" do
     it "returns a success page" do
-      
+      response = post(
+        '/albums',
+        title: 'Ice, Death, Planets, Lungs, Mushrooms And Lava',
+        release_year: '2022'
+      )
+
+      expect(response.status).to eq 200
+      expect(response.body).to include("<p>Album successfully created</p>")
     end
   end
   
