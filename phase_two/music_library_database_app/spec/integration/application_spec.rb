@@ -75,7 +75,7 @@ describe Application do
       expect(response.status).to eq 400
     end
   end
-  
+
   context "GET /artists" do
     it "returns 200 OK" do
       response = get('/artists')
@@ -101,7 +101,19 @@ describe Application do
     end
   end
 
-  context "POST /artists with parameters" do
+  context "GET /artists/new" do
+    it "returns a new artist form" do
+      response = get('/artists/new')
+
+      expect(response.status).to eq 200
+      expect(response.body).to include('<form action="/artists" method="POST">')
+      expect(response.body).to include("<h1>Add an artist</h1>")
+      expect(response.body).to include('<input type="text" id="name" name="name">')
+      expect(response.body).to include('<input type="text" id="genre" name="genre">')
+    end
+  end
+
+  context "POST /artists" do
     it "returns 200 OK" do
       response = post('/artists',name:'Wild Nothing',genre:'Indie')
       expect(response.status).to eq 200
