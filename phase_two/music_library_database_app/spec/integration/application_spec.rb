@@ -44,6 +44,16 @@ describe Application do
     end
   end
 
+  context 'GET /albums/:id' do
+    it 'returns the data of a single album formatted in html' do
+      response = get('/albums/1')
+      expect(response.status).to eq (200)
+      expect(response.body).to include ('<h1>Doolittle</h1>')
+      expect(response.body).to include ('Release year: 1989')
+      expect(response.body).to include ('Artist: Pixies')      
+    end
+  end
+
   context "GET /artists" do
     it "returns 200 OK" do
       response = get('/artists')
@@ -62,16 +72,6 @@ describe Application do
       response = get('/artists')
       expect(response.status).to eq 200
       expect(response.body).to include('Wild Nothing')
-    end
-  end
-
-  context 'GET /albums/:id' do
-    it 'returns the data of a single album formatted in html' do
-      response = get('/albums/1')
-      expect(response.status).to eq (200)
-      expect(response.body).to include ('<h1>Doolittle</h1>')
-      expect(response.body).to include ('Release year: 1989')
-      expect(response.body).to include ('Artist: Pixies')      
     end
   end
 end
