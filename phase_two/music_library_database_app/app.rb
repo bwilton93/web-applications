@@ -15,6 +15,10 @@ class Application < Sinatra::Base
   end
   
   post '/albums' do
+    if invalid_request_parameters?
+      status 400
+      return ''
+    end
     title = params[:title]
     release_year = params[:release_year]
 
@@ -25,6 +29,15 @@ class Application < Sinatra::Base
     AlbumRepository.new.create(new_album)
 
     return erb(:album_created)
+  end
+
+  def invalid_request_parameters?
+    # nil params
+    return true if params[:title] == nil || params[:release_year] == nil
+    # empty string params
+    return true if params[:title] == '' || params[:release_year] == ''
+
+    return false
   end
 
   get '/albums' do
